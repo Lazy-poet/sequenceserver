@@ -40,13 +40,13 @@ export default class HSP extends React.Component {
         ref={this.hspRef}
         data-parent-hit={this.hitDOM_ID()}
       >
-        <pre className="pre-reset hsp-stats">
+        <p className="p-reset hsp-stats">
           {this.props.showHSPNumbers &&
             `${Helpers.toLetters(this.hsp.number)}. `}
           {this.hspStats().map((s, i) => (
             <span key={i}>{s}</span>
           ))}
-        </pre>
+        </p>
         {this.hspLines()}
       </div>
     );
@@ -133,8 +133,7 @@ export default class HSP extends React.Component {
         break;
       case "blastn":
         line.push(
-          `, Strand: ${this.hsp.qframe > 0 ? "+" : "-"} / ${
-            this.hsp.sframe > 0 ? "+" : "-"
+          `, Strand: ${this.hsp.qframe > 0 ? "+" : "-"} / ${this.hsp.sframe > 0 ? "+" : "-"
           }`
         );
         break;
@@ -179,8 +178,8 @@ export default class HSP extends React.Component {
       let lqend =
         nqseq +
         (lqseq.length - lqseq.split("-").length) *
-          this.qframe_unit() *
-          this.qframe_sign();
+        this.qframe_unit() *
+        this.qframe_sign();
       nqseq = lqend + this.qframe_unit() * this.qframe_sign();
 
       let lmseq = this.hsp.midline.slice(seq_start_index, seq_stop_index);
@@ -190,8 +189,8 @@ export default class HSP extends React.Component {
       let lsend =
         nsseq +
         (lsseq.length - lsseq.split("-").length) *
-          this.sframe_unit() *
-          this.sframe_sign();
+        this.sframe_unit() *
+        this.sframe_sign();
       nsseq = lsend + this.sframe_unit() * this.sframe_sign();
 
       pp.push(
